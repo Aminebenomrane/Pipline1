@@ -1,0 +1,28 @@
+pipeline {
+    agent any  // Utilisez n'importe quel agent disponible
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Étape pour vérifier le code source depuis un référentiel Git
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Étape de construction de l'application (peut varier selon le langage)
+                sh 'mvn clean install'  // Exemple avec Maven
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Étape de test de l'application
+                sh 'mvn test'  // Exemple avec Maven
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Étape de déploiement de l'application (
